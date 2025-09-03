@@ -1,5 +1,5 @@
 import DarkVeil from "./components/DarkVeil";
-import ParticlesBackground from "./components/Particles";
+import ParticlesBackground from "./components/ParticlesBackground";
 
 function App() {
   return (
@@ -9,30 +9,33 @@ function App() {
         height: "100vh",
         position: "relative",
         overflow: "hidden",
+        background: "#000",
       }}
     >
-      {/* Background 1 - DarkVeil */}
-      <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
+      {/* Layer 1: DarkVeil */}
+      <div style={{ position: "absolute", width: "100%", height: "100%", zIndex: 0 }}>
         <DarkVeil />
       </div>
 
-      {/* Background 2 - Particles (in front of DarkVeil) */}
-      <div style={{ position: "absolute", inset: 0, zIndex: 1 }}>
+      {/* Layer 2: Particles */}
+      <div style={{ position: "absolute", width: "100%", height: "100%", zIndex: 1 }}>
         <ParticlesBackground />
       </div>
 
-      {/* Foreground Content */}
+      {/* Layer 3: UI */}
       <div
         style={{
-          position: "relative",
+          position: "absolute",
           zIndex: 2,
           color: "#fff",
           textAlign: "center",
-          paddingTop: "40vh",
+          width: "100%",
+          top: "40%",
+          transform: "translateY(-50%)",
         }}
       >
-        <h1>🔥 My Portfolio 🔥</h1>
-        <p>React + DarkVeil + Particles</p>
+        <h1 style={{ fontSize: "3rem", marginBottom: "1rem" }}>🔥 My Portfolio 🔥</h1>
+        <p style={{ fontSize: "1.2rem", opacity: 0.8 }}>React + DarkVeil + Particles</p>
       </div>
     </div>
   );
