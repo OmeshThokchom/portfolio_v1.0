@@ -33,8 +33,8 @@ export default function ParticlesBackground() {
           fpsLimit: 120,
           particles: {
             number: {
-              value: 100,
-              density: { enable: true, value_area: 800 },
+              value: 120,
+              density: { enable: true, area: 1000 },
             },
             color: {
               value: ["#a855f7", "#06b6d4", "#3b82f6", "#440909ff"],
@@ -93,7 +93,7 @@ export default function ParticlesBackground() {
                 enable: true,
                 mode: "push",
               },
-              resize: true,
+              resize: false,
             },
             modes: {
               grab: {
