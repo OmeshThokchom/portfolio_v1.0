@@ -1,0 +1,41 @@
+/* Global default look */
+.text-type {
+  font-weight: bold;
+  color: rgb(255, 0, 0);
+  z-index: 2;
+}
+
+/* Hero section (centered) */
+.hero-typewriter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(1.5rem, 4vw, 3rem); /* responsive scaling */
+  text-align: center;
+}
+
+/* Navbar version (small inline text) */
+.nav-typewriter {
+  font-size: 1rem;
+  color: #a855f7;
+  display: inline-block;
+}
+
+/* Footer version (muted tone) */
+.footer-typewriter {
+  font-size: 0.9rem;
+  color: #888;
+  text-align: center;
+}
+
+
+/* Top-left corner version */
+
+.top-left-typewriter {
+  position: absolute;
+  top: 16.5rem;
+  left: 2.5rem;
+  font-size: 1.2rem;
+  color: #ffffff;
+}

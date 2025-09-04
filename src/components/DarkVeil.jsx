@@ -78,10 +78,10 @@ export default function DarkVeil({
   hueShift = 0,
   noiseIntensity = 0,
   scanlineIntensity = 0,
-  speed = 1.5,
+  speed = 0.5,
   scanlineFrequency = 0,
-  warpAmount = 7,
-  resolutionScale = 1
+  warpAmount = 9,
+  resolutionScale = 1,
 }) {
   const ref = useRef(null);
   useEffect(() => {
