@@ -1,3 +1,123 @@
+/* Reset and Base Styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+/* App Layout */
+.app-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  background: var(--background);
+  overflow-x: hidden;
+}
+
+/* Navigation */
+.nav-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Background Layers */
+.background-layers {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+}
+
+.background-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Main Content */
+.main-content {
+  position: relative;
+  z-index: 2;
+  padding-top: 80px;
+}
+
+/* Hero Section */
+.hero-section {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.hero-content {
+  width: 100%;
+  padding: 2rem;
+  position: relative;
+}
+
+.hero-typewriter {
+  margin-bottom: 2rem;
+}
+
+.hero-focus {
+  position: relative;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .hero-content {
+    padding: 1rem;
+  }
+  
+  .hero-typewriter {
+    margin-bottom: 1.5rem;
+  }
+  
+  .top-left-typewriter {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .main-content {
+    padding-top: 60px;
+  }
+  
+  .hero-content {
+    padding: 0.5rem;
+  }
+  
+  .hero-typewriter {
+    margin-bottom: 1rem;
+  }
+  
+  .top-left-typewriter {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-height: 600px) {
+  .hero-section {
+    min-height: 100vh;
+  }
+}
+
+/* Prevent content from becoming too wide on large screens */
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1400px;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,68 +125,242 @@
 }
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #000;
+  /* Colors */
+  --primary-text: rgba(255, 255, 255, 0.87);
+  --background: #000;
+  --primary-accent: #535bf2;
+  --secondary-accent: #646cff;
+  --button-bg: #1a1a1a;
+  
+  /* Typography */
+  --base-font: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --base-size: 16px;
+  --scale-ratio: 1.2;
+  
+  /* Spacing */
+  --spacing-unit: 1rem;
+  
+  /* Transitions */
+  --transition-speed: 0.3s;
+}
+
+/* Typography Scale */
+@media (max-width: 768px) {
+  :root {
+    --base-size: 14px;
+    --scale-ratio: 1.1;
+  }
+}
+
+html {
+  font-size: var(--base-size);
+  scroll-behavior: smooth;
 }
 
 body {
-  overflow: hidden;
+  font-family: var(--base-font);
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--primary-text);
+  background-color: var(--background);
+  overflow-x: hidden;
   position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
   min-height: 100vh;
   position: relative;
-}
-a:hover {
-  color: #535bf2;
+  width: 100%;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 var(--spacing-unit) 0;
+  line-height: 1.2;
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: calc(var(--base-size) * var(--scale-ratio) * var(--scale-ratio) * var(--scale-ratio));
 }
 
+@media (max-width: 768px) {
+  h1 {
+    font-size: calc(var(--base-size) * var(--scale-ratio) * var(--scale-ratio));
+  }
+}
+
+/* Links */
+a {
+  color: var(--primary-text);
+  text-decoration: none;
+  transition: color var(--transition-speed) ease;
+}
+
+a:hover {
+  color: var(--primary-accent);
+}
+
+/* Buttons */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  font-family: var(--base-font);
+  background-color: var(--button-bg);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all var(--transition-speed) ease;
 }
+
 button:hover {
-  border-color: #646cff;
+  border-color: var(--secondary-accent);
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* Layout Classes */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-unit);
+}
+
+/* Responsive Section Spacing */
+section {
+  padding: calc(var(--spacing-unit) * 4) 0;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: calc(var(--spacing-unit) * 2) 0;
   }
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.hide-mobile {
+  display: block;
+}
+
+.show-mobile {
+  display: none;
+}
+
+/* Responsive Text */
+.text-2xl {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none;
+  }
+  
+  .show-mobile {
+    display: block;
+  }
+  
+  .text-2xl {
+    font-size: 1.25rem;
+  }
+}
+
+/* Custom Classes for Your Components */
+.top-left-typewriter {
+  position: relative;
+  margin-top: calc(var(--spacing-unit) * 5);
+  margin-left: var(--spacing-unit);
+  font-size: calc(var(--base-size) * 1.5);
+}
+
+.bottom-left {
+  position: relative;
+  margin: var(--spacing-unit);
+}
+
+/* Animation Smoothing */
+.blur-text-animation {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Responsive Margins and Paddings */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 calc(var(--spacing-unit) * 1.5);
+  }
+  
+  .top-left-typewriter {
+    margin-top: calc(var(--spacing-unit) * 4);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--spacing-unit);
+  }
+  
+  .top-left-typewriter {
+    margin-top: calc(var(--spacing-unit) * 3);
+    font-size: calc(var(--base-size) * 1.2);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 calc(var(--spacing-unit) * 0.5);
+  }
+  
+  .top-left-typewriter {
+    margin-top: calc(var(--spacing-unit) * 2);
+    margin-left: calc(var(--spacing-unit) * 0.5);
+    font-size: calc(var(--base-size) * 1.1);
+  }
+  
+  .bottom-left {
+    margin: calc(var(--spacing-unit) * 0.5);
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) {
   a:hover {
-    color: #747bff;
+    color: var(--primary-text);
   }
-  button {
-    background-color: #f9f9f9;
+  
+  button:hover {
+    border-color: transparent;
+  }
+}
+
+/* High DPI Screen Optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .no-print {
+    display: none;
   }
 }
 
